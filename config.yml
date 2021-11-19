@@ -15,6 +15,9 @@ subtitlemessage: '&cYour inventory is full'
 #If the inventory is full, do you want the player to be able to break blocks?
 cancelblockbreak: true
 
+#Message when the player uses /invtoggle
+InvtoggleMessage: '&eToggled' 
+
 #Play sound when the inventory is full?
 playsound: true
 
