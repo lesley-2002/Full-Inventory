@@ -1,6 +1,6 @@
 name: FullInventory
 author: OnlineMetLesley
-version: 1.2
+version: 1.3
 main: me.OnlineMetlesley.com.FullInventory.Main
 softdepend: [TitleAPI]
 commands:
