@@ -1,4 +1,4 @@
-package me.OnlineMetlesley.com.FullInventory;
+package me.OnlineMetLesley.com.FullInventory;
 
 import com.connorlinfoot.titleapi.TitleAPI;
 import java.util.ArrayList;
