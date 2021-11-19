@@ -1,0 +1,70 @@
+package me.OnlineMetlesley.com.FullInventory;
+
+import com.connorlinfoot.titleapi.TitleAPI;
+import java.util.Iterator;
+import java.util.List;
+import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
+import org.bukkit.Server;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class Main extends JavaPlugin implements Listener {
+   FileConfiguration config = this.getConfig();
+   Server getserver = this.getServer();
+   public static Plugin instance;
+   List<String> worlds = this.getConfig().getStringList("worlds");
+
+   public Plugin getInstance() {
+      return instance;
+   }
+
+   public void onEnable() {
+      instance = this;
+      this.saveDefaultConfig();
+      this.config.options().copyDefaults(true);
+      Bukkit.getPluginManager().registerEvents(this, this);
+      new MetricsLite(this);
+   }
+
+   public void onDisable() {
+   }
+
+   public static void registerEvents(Plugin plugin, Listener... listeners) {
+      Listener[] var5 = listeners;
+      int var4 = listeners.length;
+
+      for(int var3 = 0; var3 < var4; ++var3) {
+         Listener listener = var5[var3];
+         Bukkit.getServer().getPluginManager().registerEvents(listener, plugin);
+      }
+
+   }
+
+   @EventHandler
+   public void onblockbreak(BlockBreakEvent event) {
+      Player player = event.getPlayer();
+      if (player.getInventory().firstEmpty() == -1) {
+         Iterator var4 = this.getConfig().getStringList("worlds").iterator();
+
+         while(var4.hasNext()) {
+            String worlds = (String)var4.next();
+            if (player.getWorld().getName().equalsIgnoreCase(worlds)) {
+               player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("message").replace("%player%", player.getName())));
+               TitleAPI.sendTitle(player, 20, 40, 20, this.getConfig().getString("titlemessage"), this.getConfig().getString("subtitlemessage"));
+               if (this.getConfig().getBoolean("cancelblockbreak")) {
+                  event.setCancelled(true);
+               } else {
+                  event.setCancelled(false);
+               }
+            }
+         }
+      }
+
+   }
+}
