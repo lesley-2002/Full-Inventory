@@ -1,0 +1,5 @@
+name: FullInventory
+author: OnlineMetLesley
+version: 1.0
+main: me.OnlineMetlesley.com.FullInventory.Main
+softdepend: [TitleAPI]
