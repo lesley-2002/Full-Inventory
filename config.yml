@@ -15,6 +15,12 @@ subtitlemessage: '&cYour inventory is full'
 #If the inventory is full, do you want the player to be able to break blocks?
 cancelblockbreak: true
 
+#Play sound when the inventory is full?
+playsound: true
+
+#playsound has to be on to let a sound work. Use a sound of this site: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+sound: 'BLOCK_LAVA_EXTINGUISH'
+
 #Enabled worlds
 worlds:
 - world
