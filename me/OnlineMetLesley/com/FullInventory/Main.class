@@ -6,6 +6,7 @@ import java.util.List;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -57,6 +58,10 @@ public class Main extends JavaPlugin implements Listener {
             if (player.getWorld().getName().equalsIgnoreCase(worlds)) {
                player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.getConfig().getString("message").replace("%player%", player.getName())));
                TitleAPI.sendTitle(player, 20, 40, 20, this.getConfig().getString("titlemessage"), this.getConfig().getString("subtitlemessage"));
+               if (this.config.getBoolean("playsound")) {
+                  player.playSound(player.getLocation(), Sound.valueOf(this.getConfig().getString("sound").toUpperCase()), 10.0F, 100.0F);
+               }
+
                if (this.getConfig().getBoolean("cancelblockbreak")) {
                   event.setCancelled(true);
                } else {
