@@ -1,0 +1,22 @@
+#Hello this plugin is made by OnlineMetlesley.
+#This is a plugin where you can set a message when the inventory is full.
+#Or don't you want the player to be able to break a block, when the inventory is full?
+#If you have any questions or bug reports, please join our discord. https://discord.gg/xAHP8cA
+
+#Message send when the inventory is full
+message: '&cYour Inventory is full!'
+
+#Title message when the inventory is full, You need TitleAPI to let this work
+titlemessage: '&cFull Inventory!'
+
+#Sub-Title message when the inventory is full, set to '' to disable, You need TitleAPI to let this work.
+subtitlemessage: '&cYour inventory is full'
+
+#If the inventory is full, do you want the player to be able to break blocks?
+cancelblockbreak: true
+
+#Enabled worlds
+worlds:
+- world
+- world_nether
+- world_the_end
